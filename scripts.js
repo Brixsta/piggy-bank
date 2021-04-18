@@ -1,10 +1,15 @@
-var pig = {
+let pig = {
     balance: 100
 };
 
 const depositButton = document.getElementById('depositButton');
 const withdrawButton = document.getElementById('withdrawButton');
 const balanceButton = document.getElementById('balanceButton');
+const royalPig = document.getElementById('royalPig');
+const royalAudio = new Audio('kaching.mp3');
+const farmPigs = new Audio('farmpigs.mp3');
+
+console.log(royalPig);
 
 balanceButton.textContent = "$" + pig.balance.toFixed(2);
 
@@ -19,6 +24,7 @@ depositButton.addEventListener('click', function deposit() {
         depositAmt = parseFloat(depositAmt);
         pig.balance += depositAmt;
         balanceButton.textContent = "$" + pig.balance.toFixed(2);
+        farmPigs.play();
     }
 });
 
@@ -35,6 +41,15 @@ withdrawButton.addEventListener('click', function withdraw() {
         withdrawAmt = parseFloat(withdrawAmt);
         pig.balance -= withdrawAmt;
         balanceButton.textContent = "$" + pig.balance.toFixed(2);
+        farmPigs.play();
     }
+    
+});
+
+royalPig.addEventListener('click', function makeRandomNumber(){
+    royalAudio.play();
+    let myNumber = Math.floor(Math.random()*101);
+    pig.balance += myNumber;
+    balanceButton.textContent = "$" + pig.balance.toFixed(2);
     
 });
